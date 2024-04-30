@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('../assets/bg.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 300%;
+    height: 100vh;
+}
+
+main {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+}
+
+.castle_container {
+    display: grid;
+    grid-template-rows: 30% 70%;
+}
+
+#battlefield_container {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+}
+
+#bleu_castle {
+    background-image: url('../assets/chateau-bleu.png');
+    background-size: 200%;
+}
+
+#red_castle {
+    background-image: url('../assets/chateau-rouge.png');
+    background-size: 220%;
+}
+
+#red_castle, #bleu_castle {
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.square {
+    border-left: 1px solid rgb(156, 7, 7);
+    border-right: 1px solid rgb(156, 7, 7);
+}
+
+#bleu_parking, #red_parking {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+img {
+    width: 40px;
+}
