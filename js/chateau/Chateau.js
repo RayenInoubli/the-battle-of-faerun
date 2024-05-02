@@ -31,13 +31,13 @@ class Chateau {
         // Vérifie si suffisamment de ressources sont disponibles pour l'entraînement
 
         if (this.ressources >= guerrier.cout) {
-            this.ressources -= guerrier.cout; // Déduit le coût de l'entraînement des ressources
-            this.guerriers.push(guerrier); // Ajoute le guerrier à la liste des guerriers entraînés
-            this.fileDAttente.shift(); // Retire le guerrier de la file d'attente
-            return true; // Indique qu'un guerrier a été entraîné
+            this.ressources -= guerrier.cout;
+            this.guerriers.push(guerrier);
+            this.fileDAttente.shift();
+            return true;
         } else {
             console.log('Ressources insuffisantes pour entraîner ' + this.fileDAttente[0]);
-            return false; // Indique qu'aucun guerrier n'a été entraîné
+            return false;
         }
     }
 

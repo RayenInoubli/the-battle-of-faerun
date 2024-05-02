@@ -1,9 +1,10 @@
 class Guerrier {
-    constructor(type, force, pointsDeVie, cout) {
+    constructor(type, force, pointsDeVie, cout, couleur) {
         this.type = type;
         this.force = force;
         this.pointsDeVie = pointsDeVie;
         this.cout = cout;
+        this.coleur = couleur;
     }
 
     attaquer() {
