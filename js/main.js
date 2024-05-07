@@ -46,11 +46,3 @@ plateau.avancement(bleuT5, rougeT5);
 
 console.log("tour 6");
 plateau.avancement(bleuT6, rougeT6);
-
-if (plateau.listeAvancementB[0]?.position > 5) {
-    console.log("bleu team won  the game");   
-}
-
-if (plateau.listeAvancementR[0]?.position < 1) {
-    console.log("red team won  the game");   
-}

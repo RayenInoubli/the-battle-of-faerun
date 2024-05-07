@@ -1,7 +1,7 @@
 class Plateau {
 
     constructor() {
-        this.carreaux = [ new Carreau(), new Carreau(), new Carreau(), new Carreau(), new Carreau(), new Carreau() ];
+        this.carreaux = [ new Carreau(), new Carreau(), new Carreau(), new Carreau(), new Carreau(), new Carreau(), new Carreau() ];
         this.listeAvancementB = []
         this.listeAvancementR = []
     }
@@ -14,11 +14,31 @@ class Plateau {
         })
         for(let i = 0; i < this.listeAvancementB.length; i++) { this.listeAvancementB[i].position++; }
 
+        this.checkBataille();
+
         this.listeAvancementR.push({
             liste: listeR,
             position: 6
         })
         for(let i = 0; i < this.listeAvancementR.length; i++) { this.listeAvancementR[i].position--; }
+
+        this.checkBataille();
+
+        console.log("liste B", this.listeAvancementB);
+        console.log("liste R", this.listeAvancementR);
+    }
+
+    victoire() {
+        if (this.listeAvancementB[0]?.position > 5) {
+            return 1;
+        } else if (this.listeAvancementR[0]?.position < 1) {
+            return 2;
+        } else {
+            return 0;
+        }
+    }
+
+    checkBataille() {
 
         // eliminer la redondance dans la liste rouge
         for (let i = 0; i < this.listeAvancementR.length - 1; i++) {
@@ -40,7 +60,7 @@ class Plateau {
             }
         }
 
-        if (this.listeAvancementB[0].position == this.listeAvancementR[0].position) {
+        if (this.listeAvancementB[0]?.position == this.listeAvancementR[0]?.position) {
             this.carreaux[this.listeAvancementB[0].position].setGuerriersBleu(this.listeAvancementB[0].liste);
             this.carreaux[this.listeAvancementB[0].position].setGuerriersRouge(this.listeAvancementR[0].liste);
             let resultat = this.carreaux[this.listeAvancementB[0].position].bataille();
@@ -50,28 +70,17 @@ class Plateau {
                     console.log("team bleu won battle");
                     this.listeAvancementR.shift();
                     for(let i = 0; i < this.listeAvancementR.length; i++) { this.listeAvancementR[i].position++; }
-                    break;
+                    return 1;
                 case 2:
                     console.log("team rouge won battle");
                     this.listeAvancementB.shift();
                     for(let i = 0; i < this.listeAvancementB.length; i++) { this.listeAvancementB[i].position--; }
-                    break;
+                    return 2;
                 default:
                     break;
             }
         }
 
-        console.log("liste B", this.listeAvancementB);
-        console.log("liste R", this.listeAvancementR);
-    }
-
-    victoire() {
-        if (this.listeAvancementB[0]?.position > 5) {
-            console.log("bleu team won  the game");   
-        }
-        
-        if (this.listeAvancementR[0]?.position < 1) {
-            console.log("red team won  the game");   
-        }
+        return 0;
     }
 }

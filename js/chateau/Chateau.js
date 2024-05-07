@@ -28,7 +28,6 @@ class Chateau {
             default:
                 guerrier = new Guerrier();
         }
-        // Vérifie si suffisamment de ressources sont disponibles pour l'entraînement
 
         if (this.ressources >= guerrier.cout) {
             this.ressources -= guerrier.cout;
@@ -46,7 +45,7 @@ class Chateau {
             // Rien à faire ici, la boucle continue tant qu'il y a des guerriers à entraîner et des ressources disponibles
         }
         // Récupère une ressource
-        this.ressources += 1;
+        // this.ressources += 1;
     }
 }
 

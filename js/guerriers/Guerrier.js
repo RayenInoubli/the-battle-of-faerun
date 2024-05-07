@@ -18,8 +18,8 @@ class Guerrier {
     recevoirDegats(degats) {
         if (this.type === 'nain') {
             degats = Math.floor(degats / 2);
-        } else if (this.type === 'chef elfe') {
-            degats *= 2;
+        } else if (this.type === 'chef nain') {
+            degats = Math.floor(degats / 4);
         }
 
         this.pointsDeVie -= degats;

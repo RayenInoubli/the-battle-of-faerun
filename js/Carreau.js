@@ -21,7 +21,8 @@ class Carreau {
                     let degat = this.guerriersBleu[i]?.attaquer();
                     this.guerriersRouge[0]?.recevoirDegats(degat);
                     if (this.guerriersRouge[0]?.pointsDeVie <= 0) {
-                        this.guerriersRouge?.shift()
+                        this.guerriersRouge[1].pointsDeVie += this.guerriersRouge[0].pointsDeVie;
+                        this.guerriersRouge?.shift();
                     }
                 }
                 
@@ -29,6 +30,7 @@ class Carreau {
                     let degat = this.guerriersRouge[i]?.attaquer();
                     this.guerriersBleu[0]?.recevoirDegats(degat);
                     if (this.guerriersBleu[0]?.pointsDeVie <= 0) {
+                        this.guerriersBleu[1].pointsDeVie += this.guerriersBleu[0].pointsDeVie;
                         this.guerriersBleu?.shift()
                     }
                 }
