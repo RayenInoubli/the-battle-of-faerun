@@ -6,8 +6,8 @@ class Chateau {
         this.fileDAttente = [];
     }
 
-    ajouterAFile(type) {
-        this.fileDAttente.push(type);
+    ajouterAFile(file) {
+        this.fileDAttente = this.fileDAttente.concat(file);
     }
 
     entrainement() {
@@ -41,12 +41,6 @@ class Chateau {
     }
 
     tour() {
-        while (this.fileDAttente.length > 0 && this.entrainement()) {
-            // Rien à faire ici, la boucle continue tant qu'il y a des guerriers à entraîner et des ressources disponibles
-        }
-        // Récupère une ressource
-        // this.ressources += 1;
+        while (this.fileDAttente.length > 0 && this.entrainement()) {}
     }
 }
-
-window.Chateau = Chateau;

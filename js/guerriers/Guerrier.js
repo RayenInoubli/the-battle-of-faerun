@@ -4,7 +4,6 @@ class Guerrier {
         this.force = force;
         this.pointsDeVie = pointsDeVie;
         this.cout = cout;
-        this.coleur = couleur;
     }
 
     attaquer() {
