@@ -4,35 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/menu.css">
     <title>La bataille de Faërun</title>
 </head>
 <body>
-    <main>
-        <section class="castle_container"> 
-            <div id="bleu_castle"></div>
-            <div id="bleu_parking">
-                <img src="./assets/chef-elf-bleu.png" alt="">
-                <img src="./assets/chef-nain-bleu.png" alt="">
-                <img src="./assets/elf-bleu.png" alt="">
-                <img src="./assets/nain-bleu.png" alt="">
+    
+    <main id="main_container">
+        <div id="plateau">
+            <div class="carreau">
+                <div class="equipe_bleu_fa"></div>
+                <div class="equipe_rouge_fa"></div>
             </div>
-        </section>
-        <section id="battlefield_container"> 
-            <div id="square1" class="square"></div>
-            <div id="square2" class="square"></div>
-            <div id="square3" class="square"></div>
-            <div id="square4" class="square"></div>
-            <div id="square5" class="square"></div>
-        </section>
-        <section class="castle_container"> 
-            <div id="red_castle"></div>
-            <div id="red_parking">
-                <img src="./assets/chef-elf-rouge.png" alt="">
-                <img src="./assets/chef-nain-rouge.png" alt="">
-                <img src="./assets/elf-rouge.png" alt="">
-                <img src="./assets/nain-rouge.png" alt="">
+            <div class="carreau">
+                <div class="equipe_bleu_fa"></div>
+                <div class="equipe_rouge_fa"></div>
             </div>
-        </section>
+            <div class="carreau">
+                <div class="equipe_bleu_fa"></div>
+                <div class="equipe_rouge_fa"></div>
+            </div>
+            <div class="carreau">
+                <div class="equipe_bleu_fa"></div>
+                <div class="equipe_rouge_fa"></div>
+            </div>
+            <div class="carreau">
+                <div class="equipe_bleu_fa"></div>
+                <div class="equipe_rouge_fa"></div>
+            </div>
+        </div>
     </main>
 
     <script src="./js/GameManager.js"></script>
@@ -45,6 +44,7 @@
     <script src="./js/Carreau.js"></script>
     <script src="./js/Plateau.js"></script>
     <script src="./js/Tour.js"></script>
+    <script src="./js/menu/Menu.js"></script>
     <script src="./js/main.js"></script>
 </body>
 </html>

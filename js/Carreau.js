@@ -30,7 +30,7 @@ class Carreau {
                 }
             }
 
-            // chatB.ressources++;
+            chatB.ressources++;
             console.log('team r: ', this.guerriersRouge)
 
             for (let i = 0; i < this.guerriersRouge.length; i++) {
@@ -44,7 +44,7 @@ class Carreau {
                 }
             }
 
-            // chatR.ressources++;
+            chatR.ressources++;
             console.log('team b: ', this.guerriersBleu)
         }
 

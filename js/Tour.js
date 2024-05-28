@@ -1,26 +1,26 @@
 class Tour {
-    
 
-    tour(listeB, listeR) {
+    tour(chateauBleu, chateauRouge, plateau, equipeB, equipeR, continuer) {
 
-        let chateauB = new Chateau();
-        let chateauR = new Chateau();
+        let resultatTour = "";
 
-        let plateau = new Plateau();
+        while (continuer && !resultatTour) {
+            
+            chateauBleu.ajouterAFile(equipeB || []);
+            chateauRouge.ajouterAFile(equipeR || []);
 
-        chateauB.fileDAttente.contact(listeB)
-        chateauR.fileDAttente.contact(listeR)
+            chateauBleu.entrainement();
+            chateauRouge.entrainement();
 
-        chateauB.tour();
-        chateauR.tour();
-
-        let equipeB = chateauB.guerriers;
-        let equipeR = chateauR.guerriers;
-
-        while (plateau.checkBataille() == 0) {
-            plateau.avancement(equipeB, equipeR);
+            resultatTour = plateau.avancement(chateauBleu.guerriers, chateauRouge.guerriers, chateauBleu, chateauRouge);
+            
+            chateauBleu.guerriers = [];
+            chateauRouge.guerriers = [];
         }
 
+        console.log("final result = ", resultatTour);
 
+        console.log("final ressource B = ", chateauBleu.ressources);
+        console.log("final ressource R = ", chateauRouge.ressources);
     }
 }
