@@ -30,57 +30,57 @@ class Plateau {
 
         this.eliminerRedondance();
 
-        const avancerEquipe = () => {
-            if (pasDeBataille) {
-                // Avancement de l'équipe B
-                for (let i = 0; i < this.listeAvancementB.length; i++) {
-                    this.listeAvancementB[i].position++;
-                }
+        // const avancerEquipe = () => {
+        //     if (pasDeBataille) {
+        //         // Avancement de l'équipe B
+        //         for (let i = 0; i < this.listeAvancementB.length; i++) {
+        //             this.listeAvancementB[i].position++;
+        //         }
         
-                // Vérification de bataille pour l'équipe B
-                if (this.listeAvancementB[0]?.position == this.listeAvancementR[0]?.position) {
-                    console.log("fffffffffffffffb");
-                    resultatBataille = this.lancerBataille(this.listeAvancementB[0].equipe, this.listeAvancementR[0].equipe, chatB, chatR);
-                    pasDeBataille = false;
-                }
+        //         // Vérification de bataille pour l'équipe B
+        //         if (this.listeAvancementB[0]?.position == this.listeAvancementR[0]?.position) {
+        //             console.log("fffffffffffffffb");
+        //             resultatBataille = this.lancerBataille(this.listeAvancementB[0].equipe, this.listeAvancementR[0].equipe, chatB, chatR);
+        //             pasDeBataille = false;
+        //         }
         
-                // Avancement de l'équipe R
-                for (let i = 0; i < this.listeAvancementR.length; i++) {
-                    this.listeAvancementR[i].position--;
-                }
+        //         // Avancement de l'équipe R
+        //         for (let i = 0; i < this.listeAvancementR.length; i++) {
+        //             this.listeAvancementR[i].position--;
+        //         }
         
-                // Vérification de bataille pour l'équipe R
-                if (this.listeAvancementB[0]?.position == this.listeAvancementR[0]?.position) {
-                    console.log("fffffffffffffffr");
-                    resultatBataille = this.lancerBataille(this.listeAvancementB[0].equipe, this.listeAvancementR[0].equipe, chatB, chatR);
-                    pasDeBataille = false;
-                } 
+        //         // Vérification de bataille pour l'équipe R
+        //         if (this.listeAvancementB[0]?.position == this.listeAvancementR[0]?.position) {
+        //             console.log("fffffffffffffffr");
+        //             resultatBataille = this.lancerBataille(this.listeAvancementB[0].equipe, this.listeAvancementR[0].equipe, chatB, chatR);
+        //             pasDeBataille = false;
+        //         } 
                 
-                // Vérification des conditions de victoire
-                if (this.listeAvancementB[0] && this.listeAvancementB[0]?.position > 5) {
-                    estGagnant = "bleu";
-                    pasDeBataille = false;
-                } else if (this.listeAvancementR[0] && this.listeAvancementR[0]?.position < 1) {
-                    estGagnant = "rouge";
-                    pasDeBataille = false;
-                }
+        //         // Vérification des conditions de victoire
+        //         if (this.listeAvancementB[0] && this.listeAvancementB[0]?.position > 5) {
+        //             estGagnant = "bleu";
+        //             pasDeBataille = false;
+        //         } else if (this.listeAvancementR[0] && this.listeAvancementR[0]?.position < 1) {
+        //             estGagnant = "rouge";
+        //             pasDeBataille = false;
+        //         }
         
-                // Affichage des équipes
-                console.log('equipe B', this.listeAvancementB);
-                console.log('equipe R', this.listeAvancementR);
-                this.afficherEquipes();
+        //         // Affichage des équipes
+        //         console.log('equipe B', this.listeAvancementB);
+        //         console.log('equipe R', this.listeAvancementR);
+        //         this.afficherEquipes();
         
-                // Si pas de bataille ni de victoire, avancer encore après un délai
-                if (pasDeBataille) {
-                    setTimeout(avancerEquipe, 10000); // 1000 ms delay for the next step
-                }
-            }
-        };
+        //         // Si pas de bataille ni de victoire, avancer encore après un délai
+        //         if (pasDeBataille) {
+        //             setTimeout(avancerEquipe, 10000); // 1000 ms delay for the next step
+        //         }
+        //     }
+        // };
         
-        avancerEquipe();
+        // avancerEquipe();
         
         
-        /*while (pasDeBataille) {
+        while (pasDeBataille) {
             setTimeout(() => {}, 10000)
             for (let i = 0; i < this.listeAvancementB.length; i++) {
                 this.listeAvancementB[i].position++;
@@ -116,7 +116,7 @@ class Plateau {
             console.log('equipe R', this.listeAvancementR);
             this.afficherEquipes();
             
-        }*/
+        }
 
         if (resultatBataille == 1) {
             console.log("team bleu won battle");
