@@ -19,27 +19,11 @@ class Plateau {
             this.carreaux[0].guerriersBleu = listeB;
             bluePosition = 0;
         }
-        // if (listeB.length > 0) {
-        //     console.log('add B')
-        //     this.listeAvancementB.push({
-        //         equipe: listeB,
-        //         position: 0
-        //     })
-        // }
 
         if (listeR.length > 0 && (redPosition === 5 || this.carreaux[4].guerriersRouge.length === 0)) {
             this.carreaux[4].guerriersRouge = listeR;
             redPosition = 4;
         }
-        // if (listeR.length > 0) {
-        //     console.log('add R')
-        //     this.listeAvancementR.push({
-        //         equipe: listeR,
-        //         position: 6
-        //     })
-        // }
-
-        // this.eliminerRedondance();
         
         const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
         
@@ -55,9 +39,6 @@ class Plateau {
                   this.carreaux[i].guerriersBleu = [];
                 }
             }
-            // for (let i = 0; i < this.listeAvancementB.length; i++) {
-            //     this.listeAvancementB[i].position++;
-            // }
 
             this.afficherEquipes();
             await delay(1000);
@@ -71,11 +52,6 @@ class Plateau {
                     pasDeBataille = false;
                 }
             }
-            // if (this.listeAvancementB[0]?.position == this.listeAvancementR[0]?.position) {
-            //     console.log("fffffffffffffffb");
-            //     resultatBataille = this.lancerBataille(this.listeAvancementB[0].equipe, this.listeAvancementR[0].equipe, chatB, chatR);
-            //     pasDeBataille = false;
-            // }
 
             for (let i = 0; i < 5; i++) {
                 if (this.carreaux[i].guerriersRouge.length > 0 && i > 0 && this.carreaux[i - 1].guerriersRouge.length === 0) {
@@ -83,9 +59,6 @@ class Plateau {
                   this.carreaux[i].guerriersRouge = [];
                 }
             }
-            // for (let i = 0; i < this.listeAvancementR.length; i++) {
-            //     this.listeAvancementR[i].position--;
-            // }
 
             this.afficherEquipes();
             await delay(1000);
@@ -97,32 +70,17 @@ class Plateau {
                     pasDeBataille = false;
                 }
             }
-            // if (this.listeAvancementB[0]?.position == this.listeAvancementR[0]?.position) {
-            //     console.log("fffffffffffffffr");
-            //     resultatBataille = this.lancerBataille(this.listeAvancementB[0].equipe, this.listeAvancementR[0].equipe, chatB, chatR);
-            //     pasDeBataille = false;
-            // }
 
             if (this.carreaux[4].guerriersBleu.length > 0 && this.carreaux[4].guerriersRouge.length == 0) {
                 estGagnant = "bleu";
                 break;
             }
-            // if (this.listeAvancementB[0] && this.listeAvancementB[0]?.position > 5) {
-            //     estGagnant = "bleu";
-            //     break;
-            // }
 
             if (this.carreaux[0].guerriersRouge.length > 0 && this.carreaux[0].guerriersBleu.length == 0) {
                 estGagnant = "rouge";
                 break;
             }
-            // if (this.listeAvancementR[0] && this.listeAvancementR[0]?.position < 1) {
-            //     estGagnant = "rouge";
-            //     break;
-            // }
 
-            // console.log('equipe B', this.listeAvancementB);
-            // console.log('equipe R', this.listeAvancementR);
             this.afficherEquipes();
             await delay(1000);
         }
@@ -130,17 +88,9 @@ class Plateau {
         if (resultatBataille == 1) {
             console.log("team bleu won battle");
             this.carreaux[positionBataille].guerriersRouge = [];
-            // this.listeAvancementR.shift();
-            // if (this.listeAvancementR.length > 0) {
-            //     for(let i = 0; i < this.listeAvancementR.length-1; i++) { this.listeAvancementR[i].position++; }
-            // }
         } else if (resultatBataille == 2) {
             console.log("team rouge won battle");
             this.carreaux[positionBataille].guerriersBleu = [];
-            // this.listeAvancementB.shift();
-            // if (this.listeAvancementB.length > 0) {
-            //     for(let i = 0; i < this.listeAvancementB.length-1; i++) { this.listeAvancementB[i].position--; }
-            // }
         } else {
             return estGagnant;
         }
@@ -208,36 +158,5 @@ class Plateau {
             equipeBDiv.appendChild(equipeBElement);
             equipeRDiv.appendChild(equipeRElement);
         });
-
-
-        // this.listeAvancementB.forEach(avancement => {
-        //     const equipeBElement = document.createElement('li');
-            
-        //     avancement.equipe.forEach(guerrier => {
-        //         const imgElement = document.createElement('img');
-        //         imgElement.src = guerrier.image;
-        //         imgElement.alt = guerrier.type;
-        //         equipeBElement.appendChild(imgElement);
-        //     });
-        
-        //     console.log("position bleu: ", avancement.position - 1);
-        //     let equipeBDiv = champsDeBataille[avancement.position - 1].querySelector('.equipe_bleu_fa');
-        //     equipeBDiv.appendChild(equipeBElement);
-        // });
-        
-        // this.listeAvancementR.forEach(avancement => {
-        //     const equipeRElement = document.createElement('li');
-        
-        //     avancement.equipe.forEach(guerrier => {
-        //         const imgElement = document.createElement('img');
-        //         imgElement.src = guerrier.image;
-        //         imgElement.alt = guerrier.type;
-        //         equipeRElement.appendChild(imgElement);
-        //     });
-        
-        //     console.log("position red: ", avancement.position - 1);
-        //     let equipeRDiv = champsDeBataille[avancement.position - 1].querySelector('.equipe_rouge_fa');
-        //     equipeRDiv.appendChild(equipeRElement);
-        // });
     }
 }
