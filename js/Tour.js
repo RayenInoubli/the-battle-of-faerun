@@ -22,5 +22,7 @@ class Tour {
 
         console.log("final ressource B = ", chateauBleu.ressources);
         console.log("final ressource R = ", chateauRouge.ressources);
+
+        return resultatTour;
     }
 }

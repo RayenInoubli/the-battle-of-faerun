@@ -24,7 +24,6 @@ class Carreau {
                 if (this.guerriersRouge[0]?.pointsDeVie <= 0) {
                     if (this.guerriersRouge.length > 1) {
                         this.guerriersRouge[1].recevoirDegats(-this.guerriersRouge[0]?.pointsDeVie);
-
                     }
                     this.guerriersRouge.shift();
                 }

@@ -76,3 +76,30 @@ dialog {
     font-size: 1.3rem;
     font-weight: 600;
 }
+
+li {
+    text-decoration: none;
+    list-style: none;
+}
+
+li > img {
+    width: 70px;
+}
+
+#gagnant {
+    color: white;
+}
+
+#winner_dialog_body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#bleu {
+    color: rgb(0, 108, 196);
+}
+
+#rouge {
+    color: rgb(196, 0, 0);
+}

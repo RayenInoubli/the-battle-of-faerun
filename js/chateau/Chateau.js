@@ -1,9 +1,10 @@
 class Chateau {
     
-    constructor() {
+    constructor(images) {
         this.guerriers = [];
         this.ressources = 3;
         this.fileDAttente = [];
+        this.images = images;
     }
 
     ajouterAFile(file) {
@@ -16,16 +17,16 @@ class Chateau {
             let guerrier;
             switch (this.fileDAttente[0]) {
                 case 'nain':
-                    guerrier = new Nain();
+                    guerrier = new Nain(10 ,100 ,1 ,this.images.nain);
                     break;
                 case 'elfe':
-                    guerrier = new Elfe();
+                    guerrier = new Elfe(10 ,100 ,2 ,this.images.elfe);
                     break;
                 case 'chefNain':
-                    guerrier = new ChefNain();
+                    guerrier = new ChefNain(10 ,100 ,3 ,this.images.chefNain);
                     break;
                 case 'chefElfe':
-                    guerrier = new ChefElfe();
+                    guerrier = new ChefElfe(10 ,100 ,4 ,this.images.chefElfe);
                     break;
                 default:
                     guerrier = new Guerrier();
