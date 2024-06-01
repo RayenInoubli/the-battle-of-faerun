@@ -2,8 +2,8 @@ class Plateau {
 
     constructor() {
         this.carreaux = [new Carreau(), new Carreau(), new Carreau(), new Carreau(), new Carreau()];
-        this.listeAvancementB = []
-        this.listeAvancementR = []
+        // this.listeAvancementB = []
+        // this.listeAvancementR = []
     }
 
     async avancement(listeB, listeR, chatB, chatR) {
@@ -15,19 +15,18 @@ class Plateau {
         let redPosition = 5;
         let positionBataille = 0;
 
-        if (listeB.length > 0 && (bluePosition === -1 || this.carreaux[0].guerriersBleu.length === 0)) {
-            this.carreaux[0].guerriersBleu = listeB;
-            bluePosition = 0;
+        if (listeB.length > 0 && this.carreaux[0].guerriersBleu.length === 0) {
+            this.carreaux[0].guerriersBleu.push(...listeB);
+            // bluePosition = 0;
         }
 
-        if (listeR.length > 0 && (redPosition === 5 || this.carreaux[4].guerriersRouge.length === 0)) {
-            this.carreaux[4].guerriersRouge = listeR;
-            redPosition = 4;
+        if (listeR.length > 0 && this.carreaux[4].guerriersRouge.length === 0) {
+            this.carreaux[4].guerriersRouge.push(...listeR);
+            // redPosition = 4;
         }
         
         const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
         
-
         while (pasDeBataille) {
         
             this.afficherEquipes();
@@ -35,7 +34,7 @@ class Plateau {
 
             for (let i = 4; i >= 0; i--) {
                 if (this.carreaux[i].guerriersBleu.length > 0 && i < 4 && this.carreaux[i + 1].guerriersBleu.length === 0) {
-                  this.carreaux[i + 1].guerriersBleu = this.carreaux[i].guerriersBleu;
+                  this.carreaux[i + 1].guerriersBleu.push(...this.carreaux[i].guerriersBleu);
                   this.carreaux[i].guerriersBleu = [];
                 }
             }
@@ -46,20 +45,25 @@ class Plateau {
             for (let i = 0; i < 5; i++) {
                 console.log(this.carreaux[i].guerriersBleu, this.carreaux[i].guerriersRouge);
                 if (this.carreaux[i].guerriersBleu.length > 0 && this.carreaux[i].guerriersRouge.length > 0) {
-                    console.log('rrrrrrrrrrrrrrrrrrrrr')
                     positionBataille = i;
                     resultatBataille = this.carreaux[i].bataille(chatB, chatR);
                     pasDeBataille = false;
                 }
             }
 
+            
+            this.afficherEquipes();
+            await delay(1000);
+
+            if (!pasDeBataille) break;
+            
             for (let i = 0; i < 5; i++) {
                 if (this.carreaux[i].guerriersRouge.length > 0 && i > 0 && this.carreaux[i - 1].guerriersRouge.length === 0) {
-                  this.carreaux[i - 1].guerriersRouge = this.carreaux[i].guerriersRouge;
-                  this.carreaux[i].guerriersRouge = [];
+                    this.carreaux[i - 1].guerriersRouge.push(...this.carreaux[i].guerriersRouge);
+                    this.carreaux[i].guerriersRouge = [];
                 }
             }
-
+            
             this.afficherEquipes();
             await delay(1000);
 
@@ -96,36 +100,6 @@ class Plateau {
         }
 
         return resultatBataille;
-    }
-
-    eliminerRedondance() {
-        for (let i = 0; i < this.listeAvancementB.length - 1; i++) {
-            for (let j = i + 1; j < this.listeAvancementB.length; j++) {
-                if (this.listeAvancementB[i].position === this.listeAvancementB[j].position) {
-                    this.listeAvancementB[i].equipe = this.listeAvancementB[i].equipe.concat(this.listeAvancementB[j].equipe);
-                    this.listeAvancementB.splice(j, 1);
-                }
-            }
-        }
-
-        for (let i = 0; i < this.listeAvancementR.length - 1; i++) {
-            for (let j = i + 1; j < this.listeAvancementR.length; j++) {
-                if (this.listeAvancementR[i].position === this.listeAvancementR[j].position) {
-                    this.listeAvancementR[i].equipe = this.listeAvancementR[i].equipe.concat(this.listeAvancementR[j].equipe);
-                    this.listeAvancementR.splice(j, 1);
-                }
-            }
-        }
-    }
-
-    lancerBataille(equipeB, equipeR, chatB, chatR) {
-        let resultat = 0;
-
-        this.carreaux.setGuerriersBleu(equipeB);
-        this.carreaux.setGuerriersRouge(equipeR);
-        resultat = this.carreaux.bataille(chatB, chatR);
-
-        return resultat;
     }
 
     afficherEquipes() {

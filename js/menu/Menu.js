@@ -4,7 +4,7 @@ class Menu {
         this.tour = new Tour();
     }
 
-    afficherMenuEntrainement(chateauBleu, chateauRouge, plateau, bleuT1, rougeT1, continuer) {
+    afficherMenuEntrainement(chateauBleu, chateauRouge, plateau) {
         let equipes = {};
 
         let resTotaleB = 0;
@@ -136,7 +136,7 @@ class Menu {
             console.log("equipeB à entrainer: ",equipeB);
             console.log("equipeR à entrainer: ",equipeR);
 
-            this.tour.tour(chateauBleu, chateauRouge, plateau, equipeB, equipeR, continuer).then((resultat) => {
+            this.tour.tour(chateauBleu, chateauRouge, plateau, equipeB, equipeR).then((resultat) => {
                 if (resultat) {
 
                     if (resultat == 1 || resultat == 2) {

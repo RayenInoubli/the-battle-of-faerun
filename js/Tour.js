@@ -1,10 +1,10 @@
 class Tour {
 
-    tour(chateauBleu, chateauRouge, plateau, equipeB, equipeR, continuer) {
+    tour(chateauBleu, chateauRouge, plateau, equipeB, equipeR) {
 
         let resultatTour = "";
 
-        while (continuer && !resultatTour) {
+        while (!resultatTour) {
             
             chateauBleu.ajouterAFile(equipeB || []);
             chateauRouge.ajouterAFile(equipeR || []);

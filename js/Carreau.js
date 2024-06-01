@@ -51,11 +51,6 @@ class Carreau {
             console.log('team r won!!!!!: ', this.guerriersRouge)
             return 2;
         }
-        if (this.guerriersRouge.length == 0) {
-            console.log('team b won!!!!!: ', this.guerriersBleu)
-            return 1;
-        }
-
-        return 0
+        return 1;
     }
 }
